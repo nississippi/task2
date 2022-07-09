@@ -1,5 +1,10 @@
 <h1>Books</h1>
 
+<% @books.each do |book| %>
+  <%= book.title %>
+  <%= book.body %>
+<% end %>
+
 <h2>New Book</h2>
 <%= form_with model: @book do |f| %>
 

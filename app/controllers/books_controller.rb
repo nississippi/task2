@@ -25,6 +25,12 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
   
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
+  end
+  
   #privateより下の記述はアクションとして認識されないのでURLと対応できなくなる
   private
   #フォームから送られてくるデータはparamsに入っており、requireでモデル名を指定、permitで保存を許可するカラムを指定

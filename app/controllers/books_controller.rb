@@ -22,6 +22,7 @@ class BooksController < ApplicationController
   end
 
   def edit
+    @book = Book.find(params[:id])
   end
   
   #privateより下の記述はアクションとして認識されないのでURLと対応できなくなる

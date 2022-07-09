@@ -17,6 +17,7 @@ class BooksController < ApplicationController
   end
 
   def show
+    #URLごとに取得するレコードを変えられる
     @book = Book.find(params[:id])
   end
 

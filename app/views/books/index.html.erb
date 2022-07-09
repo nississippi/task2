@@ -16,6 +16,7 @@
           <!--上記ブロック変数”book”を参照している-->
           <td><%= book.title %></td>
           <td><%= book.body %></td>
+          <!--ルーティングにbookと名前がついている（rails routesでroutesで確認出来る）-->
           <td><%= link_to "Show", book_path(book.id) %></td>
           <td>edit</td>
           <td>destroy</td>

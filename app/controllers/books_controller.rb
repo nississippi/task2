@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     book = Book.new(book_params)
     #呼び出したModelインスタンスをデータベースに保存するメソッド
     book.save
-    redirect_to '/books/:id'
+    redirect_to book_path(book.id)
   end
 
   def show

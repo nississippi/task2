@@ -26,6 +26,16 @@
 </table>
 
 <h2>New Book</h2>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <!--入力したデータをnewメソッドで作成した空のオブジェクトに格納-->
 <%= form_with model: @book do |f| %>
   <div class="field">
@@ -40,3 +50,4 @@
     <%= f.submit'Create Book' %>
   </div>
 <% end %>
+

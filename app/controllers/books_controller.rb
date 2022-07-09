@@ -10,10 +10,16 @@ class BooksController < ApplicationController
   def create
     #入力されたデータを受け取りローカル変数に格納
     #ビューに渡す必要がないので@はつけない
-    book = Book.new(book_params)
+    #バリデーションを設定した際にエラーメッセージ表示のためローカル変数をインスタンス変数に
+    @book = Book.new(book_params)
     #呼び出したModelインスタンスをデータベースに保存するメソッド
-    book.save
-    redirect_to book_path(book.id)
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      #createアクションからindexアクションを経由せず直接indexのビューに飛ぶので@booksを取得しないとエラーが起こる
+      @books = Book.all
+      render :index
+    end
   end
 
   def show

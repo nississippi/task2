@@ -14,7 +14,7 @@ class BooksController < ApplicationController
     @book = Book.new(book_params)
     #呼び出したModelインスタンスをデータベースに保存するメソッド
     if @book.save
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book.id), notice: 'Book was successfully created.'
     else
       #createアクションからindexアクションを経由せず直接indexのビューに飛ぶので@booksを取得しないとエラーが起こる
       @books = Book.all

@@ -12,7 +12,7 @@ class BooksController < ApplicationController
     #ビューに渡す必要がないので@はつけない
     #バリデーションを設定した際にエラーメッセージ表示のためローカル変数をインスタンス変数に
     @book = Book.new(book_params)
-    #呼び出したModelインスタンスをデータベースに保存するメソッド
+    #save=>呼び出したModelインスタンスをデータベースに保存するメソッド
     if @book.save
       redirect_to book_path(@book.id), notice: 'Book was successfully created.'
     else
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    #URLごとに取得するレコードを変えられる
+    #params[:id]=>URLごとに取得するレコードを変えられる
     @book = Book.find(params[:id])
   end
 
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     
     if @book.update(book_params)
-      redirect_to book_path(@book.id)
+      redirect_to book_path(@book.id), notice: 'Book was successfully updated.'
     else
       render :edit
     end
